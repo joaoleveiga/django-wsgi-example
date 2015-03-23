@@ -34,10 +34,20 @@ and add the following:
         WSGIScriptAlias / /opt/django-wsgi-example/myproj/myproj/wsgi.py
         WSGIDaemonProcess djwsgi-example python-path=/opt/django-wsgi-example/myproj:/opt/django-wsgi-example/env/lib/python2.7/site-packages
         WSGIProcessGroup djwsgi-example
+
+        Alias /static/ /opt/django-wsgi-example/myproj/web/static/
+
+        <Directory /opt/django-wsgi-example/myproj/web/static/>
+            # Require all granted
+            Order deny,allow
+            Allow from all
+        </Directory>
         
-        <Directory /path/to/mysite.com/mysite>
+        <Directory /opt/django-wsgi-example/myproj/myproj>
             <Files wsgi.py>
-                Require all granted
+                # Require all granted
+                Order deny,allow
+                Allow from all
             </Files>
         </Directory>
     </VirtualHost>
