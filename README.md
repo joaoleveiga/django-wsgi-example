@@ -7,6 +7,8 @@ This is a very basic boilerplate-like repo for tests with Django, mod_wsgi and A
 
 1. Load up the project in a virtual environment.
 
+Example setup:
+
     $ cd /opt
     $ git clone
     $ cd django-wsgi-example/
@@ -16,6 +18,7 @@ This is a very basic boilerplate-like repo for tests with Django, mod_wsgi and A
     $ cd myproj/
     $ python manage.py makemigrations
     $ python manage.py migrate
+
 
 2. Edit the apache conf
 
