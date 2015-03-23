@@ -1,0 +1,11 @@
+# Virtualenv
+env/
+
+# Django
+*.sqlite3
+
+# Windows
+Thumbs.db
+
+# Python
+*.pyc
