@@ -1,7 +1,9 @@
 django-wsgi-example
 ===================
 
-This is a very basic boilerplate-like repo for tests with Django, mod_wsgi and Apache integration.
+This is a very basic boilerplate-like repo for tests with [Django](http://djangoproject.com/), [mod_wsgi](https://modwsgi.readthedocs.org/en/master/) and [Apache Webserver](http://httpd.apache.org/) integration.
+
+This project assumes that the user wants to test this setup with a PostgreSQL database with a database called ``table`` whose owner is a ``test`` user with password ``test``.
 
 ## Instructions
 
@@ -53,3 +55,21 @@ and add the following:
     </VirtualHost>
 
 Cross your fingers while restarting Apache.
+
+## Probable Solution
+
+SELinux seems to not like this setup. A probable solution for systems with CentOS 6 and Apache is to do this:
+
+    semanage fcontext -a -t httpd_sys_script_exec_t FILE_PATH
+    restorecon -v FILE_PATH
+
+To files that might be raising _Permission Denied_ errors. Take special notice to database shared libraries (e.g. ``_psycopg2.so``)
+
+
+----
+
+### License
+
+(c) 2015 João Veiga
+
+See ``LICENSE`` for more.
